@@ -1,31 +1,20 @@
-const express = require("express")
-require('dotenv').config({ path: '.env' });
-const databaseConnect=require("./dbConnection")
+const express = require("express");
+require("dotenv").config({ path: ".env" });
+const databaseConnect = require("./dbConnection");
+const userRouter = require('./Routes/userRoute');
 const app = express();
 
 app.use(express.json());
 
 try {
-
-  databaseConnect()
-  
+  databaseConnect();
 } catch (error) {
-  console.log(err)
-  
+  console.log(err);
 }
 
-
-app.get('/', (req, res, next) => {
-    res.json("hello").status(200)
-    next();
-  });
-  
-let port=3000
+app.use('/api/v1/users', userRouter);
+let port = 3000;
 
 app.listen(port, () => {
-console.log(`the sever is running on port ${port}`
-    );
-  });
-
-
-
+  console.log(`the sever is running on port ${port}`);
+});
