@@ -1,9 +1,18 @@
 const express = require("express")
-
+require('dotenv').config({ path: '.env' });
+const databaseConnect=require("./dbConnection")
 const app = express();
 
 app.use(express.json());
 
+try {
+
+  databaseConnect()
+  
+} catch (error) {
+  console.log(err)
+  
+}
 
 
 app.get('/', (req, res, next) => {
