@@ -1,11 +1,7 @@
-const express = require("express");
 require("dotenv").config({ path: ".env" });
 const databaseConnect = require("./dbConnection");
-const userRouter = require("./Routes/userRoute");
-const orderRouter = require("./Routes/orderRoute");
-const app = express();
 
-app.use(express.json());
+const app = require("./appConfig");
 
 try {
   databaseConnect();
@@ -13,8 +9,6 @@ try {
   console.log(err);
 }
 
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/orders", orderRouter);
 let port = process.env.PORT;
 
 app.listen(port, () => {
