@@ -4,14 +4,15 @@
   "description": "an ecommerce api build with node js",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=testing  nyc  mocha  --recursive  --timeout 250000   ---exit",
     "start": "nodemon server.js"
   },
   "author": "tim lubanga",
   "license": "ISC",
   "devDependencies": {
     "ndb": "^1.1.5",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
   },
   "engines": {
     "node": "16.14.2",
@@ -19,10 +20,14 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chai": "^4.3.6",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^9.2.2",
+    "mongodb-memory-server": "^6.9.6",
     "mongoose": "^6.2.10",
+    "supertest": "^6.2.2",
     "validator": "^13.7.0"
   }
 }
